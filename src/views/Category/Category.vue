@@ -16,26 +16,19 @@
     </div>
 </template>
 <script>
-    const axios = require("axios");
-    import CategoryBox from '../../components/Category/CategoryBox.vue'
+import CategoryBox from '../../components/Category/CategoryBox.vue'
 export default{
     name: "CategoryPage",
+    props: ["categories"],
     components: {CategoryBox},
     data() {
         return {
             baseUrl: "https://limitless-lake-55070.herokuapp.com",
-            categories: []
         };
     },
     methods: {
-        async getCategories() {
-            await axios.get(`${this.baseUrl}/category/`)
-            .then(res => this.categories = res.data)
-            .catch(err => console.log(err))
-        }
     },
     mounted() {
-        this.getCategories();
     }
 }
 </script>
